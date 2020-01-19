@@ -7,6 +7,8 @@ public class Platform : MonoBehaviour
 {
     [SerializeField] private bool isAnimated;
     [SerializeField] private float animationDistance = 5f;
+    [SerializeField] bool isSurface = false;
+    private int surfaceSpeed = 10;
 
     private float startX;
     private void Start()
@@ -51,6 +53,13 @@ public class Platform : MonoBehaviour
         if (isMovementObject)
         {
             other.transform.parent = transform;
+        }
+
+        if (isSurface)
+        {
+            surfaceSpeed *= -1;
+            SurfaceEffector2D surfaceEffector = GetComponent<SurfaceEffector2D>();
+            surfaceEffector.speed = surfaceSpeed;
         }
     }
 

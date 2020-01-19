@@ -6,7 +6,8 @@ public class ObjectsSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] prefabs;
     [SerializeField] private bool isRandom;
-    [SerializeField] private float spawnTime = 1f;
+    [SerializeField] private float spawnTimeFrom = 0.5f;
+    [SerializeField] private float spawnTimeFTo = 2f;
 
     private int current = 0;
     // Start is called before the first frame update
@@ -19,6 +20,8 @@ public class ObjectsSpawner : MonoBehaviour
     {
         while (true)
         {
+            float spawnTime = Random.Range(spawnTimeFrom, spawnTimeFTo);
+            
             yield return new WaitForSeconds(spawnTime);
 
             if (isRandom)
