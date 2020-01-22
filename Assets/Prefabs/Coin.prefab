@@ -132,3 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7223273057051771532}
+  coinUI: {fileID: 0}
+  movementDistance: 0.5
+  isFallDownCoin: 0

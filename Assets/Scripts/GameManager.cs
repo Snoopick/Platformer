@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum GameState
@@ -36,4 +37,35 @@ public class GameManager : MonoBehaviour
         print(Player);
         print($"Enemies count {Enemies.Count}");
     }
+    
+#if UNITY_EDITOR
+    [ContextMenu("Hide all characters")]
+    public void HideAllCharacters()
+    {
+        var characters = FindCharacters();
+        foreach (var character in characters)
+        {
+            character.SetActive(false);
+        }
+    }
+    
+    [ContextMenu("Show all characters")]
+    public void ShowAllCharacters()
+    {
+        var characters = FindCharacters();
+        foreach (var character in characters)
+        {
+            character.SetActive(true);
+        }
+    }
+
+    public List<GameObject> FindCharacters()
+    {
+        var characters = Resources.FindObjectsOfTypeAll<BaseEnemy>().Select(e => e.gameObject).ToList();
+        characters.AddRange(Resources.FindObjectsOfTypeAll<Player>().Select(p => p.gameObject).ToList());
+
+        return characters;
+    }
+    
+#endif
 }

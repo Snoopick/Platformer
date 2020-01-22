@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        other.transform.GetComponent<IHitBox>().Hit(Damage);
+        other.GetComponent<IHitBox>().Hit(Damage);
         Destroy(gameObject);
     }
 }

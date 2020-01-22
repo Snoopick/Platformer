@@ -44,8 +44,6 @@ public class PlayerWeapon : MonoBehaviour, IDamager
         projectileScript.ProjectileSpeed = rangeWeaponData.ProjectileSpeed;
     }
 
-    public string ButtonName => buttonName;
-
     private IHitBox GetTarget()
     {
         IHitBox target = null;
